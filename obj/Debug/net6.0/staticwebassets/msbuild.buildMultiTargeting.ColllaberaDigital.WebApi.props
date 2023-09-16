@@ -1,0 +1,3 @@
+﻿<Project>
+  <Import Project="..\build\ColllaberaDigital.WebApi.props" />
+</Project>
