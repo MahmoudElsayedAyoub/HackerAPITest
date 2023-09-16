@@ -1,7 +1,9 @@
 ﻿using ColllaberaDigital.WebApi.DependencyServices.Contract;
 using ColllaberaDigital.WebApi.DependencyServices.Dtos;
+using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
 
 namespace ColllaberaDigital.WebApi.Controllers
@@ -13,24 +15,27 @@ namespace ColllaberaDigital.WebApi.Controllers
 
         private readonly ILogger<HackerAPIController> _logger;
         private readonly IConfiguration _configuration;
+        public readonly IMemoryCache _memoryCache;
         private readonly IStoriesServices _storiesServices;
 
 
         public HackerAPIController(
         ILogger<HackerAPIController> logger,
         IConfiguration configuration,
-        IStoriesServices storiesServices)
+        IStoriesServices storiesServices,
+         IMemoryCache memoryCache)
         {
             _logger = logger;
             _configuration = configuration;
             _storiesServices = storiesServices;
+            _memoryCache = memoryCache;
         }
 
 
         [HttpGet(nameof(ListBestStories))]
         public async Task<List<long>> ListBestStories()
         {
-            return await _storiesServices.GetBestStories("v0/beststories.json", null); ;
+            return await _storiesServices.GetBestStories("v0/beststories.json", null);
         }
 
 
@@ -46,7 +51,12 @@ namespace ColllaberaDigital.WebApi.Controllers
         [HttpGet(nameof(GetById))]
         public async Task<Story> GetById(long id)
         {
-            return await _storiesServices.GetBestStoryById($"v0/item/{id}.json?print=pretty");
+            var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{id}.json?print=pretty");
+            if (_memoryCache.TryGetValue("story", out Story? CachedStory))
+            {
+                _memoryCache.Set("story", _storydata);
+            }
+            return _storydata ?? new Story();
         }
     }
 }
