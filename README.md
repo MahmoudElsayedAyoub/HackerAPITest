@@ -7,7 +7,7 @@
  of this license document, but changing it is not allowed.
 
 ------------------------------------------------------------------------------------------------
-Our sample it is a smaple small use to do as follow:
+**Our sample it is a smaple small use to do as follow:
 Using ASP.NET Core, implement a RESTful API to retrieve the details of the first n "best stories" from the Hacker News API, where n is specified by the caller to the API.
 The Hacker News API is documented here: https://github.com/HackerNews/API .
 The IDs for the "best stories" can be retrieved from this URI: https://hacker-news.firebaseio.com/v0/beststories.json .
@@ -31,11 +31,11 @@ The API should return an array of the first n "best stories" as returned by the 
 In addition to the above, your API should be able to efficiently service large numbers of requests without risking overloading of the Hacker News API.
 You should share a public repository with us, that should include a README.md file which describes how to run the application, any assumptions you have made, and
 any enhancements or changes you would make, given the time.
-We using some of feaure of Asp .net 6
+We using some of feaure of Asp .net 6**
 
 -------------------------------------------------------------------------
 
-**How it uses  
+How it uses  
 
 1- using dotnet run on same file of dll 
 
@@ -43,7 +43,7 @@ We using some of feaure of Asp .net 6
 
 3- open the link https://localhost:7066/ 
 
-4- then write on the Brower https://localhost:7066/swagger/index.html **
+4- then write on the Brower https://localhost:7066/swagger/index.html 
 
 
 
