@@ -10,11 +10,8 @@
 **Our sample it is a smaple small use to do as follow: 
 
 Using ASP.NET Core, implement a RESTful API to retrieve the details of the first n "best stories" from the Hacker News API, where n is specified by the caller to the API. 
-
 The Hacker News API is documented here: https://github.com/HackerNews/API . 
-
 The IDs for the "best stories" can be retrieved from this URI: https://hacker-news.firebaseio.com/v0/beststories.json . 
-
 The details for an individual story ID can be retrieved from this URI: https://hacker-news.firebaseio.com/v0/item/21233041.json (in this case for the story with ID 
 
 21233041 ) 
