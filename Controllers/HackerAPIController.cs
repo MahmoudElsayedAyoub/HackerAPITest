@@ -5,6 +5,8 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.Caching.Memory;
 using Microsoft.Extensions.Configuration;
+using System.Reflection;
+using System.Threading.Tasks;
 
 namespace ColllaberaDigital.WebApi.Controllers
 {
@@ -52,7 +54,9 @@ namespace ColllaberaDigital.WebApi.Controllers
         public async Task<Story> GetStoriesById(long id)
         {
             //search first in cache 
-            if (_memoryCache.TryGetValue(id.ToString(), out Story _Cachestorydata))
+            var field = typeof(MemoryCache).GetProperty("EntriesCollection", BindingFlags.NonPublic | BindingFlags.Instance);
+            var collection = field.GetValue(_memoryCache);
+            if (_memoryCache.TryGetValue(id, out Story _Cachestorydata))
             {
                 return _Cachestorydata;
             }
@@ -77,13 +81,34 @@ namespace ColllaberaDigital.WebApi.Controllers
             {
                 tasks.Add(Task.Run(async () =>
                 {
-
                     var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{item}.json?print=pretty");
                     finalResult.Add(_storydata);
                 }));
 
             }
             await Task.WhenAll(tasks);
+            return finalResult ?? new List<Story>();
+        }
+
+
+
+        [HttpGet(nameof(GetBestStorieswithDeatilsV2ByN))]
+        public async Task<List<Story>> GetBestStorieswithDeatilsV2ByN(int? n)
+        {
+
+            var stories = await _storiesServices.GetBestStories("v0/beststories.json", n);
+            var finalResult = new List<Story>();
+
+            ParallelOptions parallelOptions = new()
+            {
+                MaxDegreeOfParallelism = 3
+            };
+            await Parallel.ForEachAsync(stories, parallelOptions, async (Id, token) =>
+            {
+                var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{Id}.json?print=pretty");
+                finalResult.Add(_storydata);
+            });
+
             return finalResult ?? new List<Story>();
         }
     }
