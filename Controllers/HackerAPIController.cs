@@ -42,7 +42,7 @@ namespace ColllaberaDigital.WebApi.Controllers
         [HttpGet(nameof(GetBestStoriesByN))]
         public async Task<List<long>> GetBestStoriesByN(int? n)
         {
-            return await _storiesServices.GetBestStories("v0/beststories.json", n); ;
+            return await _storiesServices.GetBestStories("v0/beststories.json", n);
         }
 
 
@@ -57,6 +57,26 @@ namespace ColllaberaDigital.WebApi.Controllers
                 _memoryCache.Set("story", _storydata);
             }
             return _storydata ?? new Story();
+        }
+
+        [HttpGet(nameof(GetBestStoriesWithDeatilsByN))]
+        public async Task<List<Story>> GetBestStoriesWithDeatilsByN(int? n)
+        {
+
+            var stories = await _storiesServices.GetBestStories("v0/beststories.json", n);
+            var tasks = new List<Task>();
+            var finalResult = new List<Story>();
+            foreach (var item in stories)
+            {
+                tasks.Add(Task.Run(async () =>
+                {
+                    var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{item}.json?print=pretty");
+                    finalResult.Add(_storydata);
+                }));
+
+            }
+            await Task.WhenAll(tasks);
+            return finalResult ?? new List<Story>();
         }
     }
 }
