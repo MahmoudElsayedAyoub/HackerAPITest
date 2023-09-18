@@ -101,7 +101,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 
             ParallelOptions parallelOptions = new()
             {
-                MaxDegreeOfParallelism = 3
+                MaxDegreeOfParallelism = 20
             };
             await Parallel.ForEachAsync(stories, parallelOptions, async (Id, token) =>
             {
