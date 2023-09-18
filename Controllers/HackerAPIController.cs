@@ -42,21 +42,49 @@ namespace ColllaberaDigital.WebApi.Controllers
         [HttpGet(nameof(GetBestStoriesByN))]
         public async Task<List<long>> GetBestStoriesByN(int? n)
         {
-            return await _storiesServices.GetBestStories("v0/beststories.json", n); ;
+            return await _storiesServices.GetBestStories("v0/beststories.json", n);
         }
 
 
 
         // GET api/<ValuesController>/5
-        [HttpGet(nameof(GetById))]
-        public async Task<Story> GetById(long id)
+        [HttpGet(nameof(GetStoriesById))]
+        public async Task<Story> GetStoriesById(long id)
         {
-            var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{id}.json?print=pretty");
-            if (_memoryCache.TryGetValue("story", out Story? CachedStory))
+            //search first in cache 
+            if (_memoryCache.TryGetValue(id.ToString(), out Story _Cachestorydata))
             {
-                _memoryCache.Set("story", _storydata);
+                return _Cachestorydata;
             }
+            //Get data 
+            var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{id}.json?print=pretty");
+            //set cache options
+            var cacheOptions = new MemoryCacheEntryOptions().SetAbsoluteExpiration(TimeSpan.FromMinutes(30));
+            //set value
+            _memoryCache.Set(_storydata?.id, _storydata, cacheOptions);
+
             return _storydata ?? new Story();
+        }
+
+        [HttpGet(nameof(GetBestStoriesWithDeatilsByN))]
+        public async Task<List<Story>> GetBestStoriesWithDeatilsByN(int? n)
+        {
+
+            var stories = await _storiesServices.GetBestStories("v0/beststories.json", n);
+            var tasks = new List<Task>();
+            var finalResult = new List<Story>();
+            foreach (var item in stories)
+            {
+                tasks.Add(Task.Run(async () =>
+                {
+
+                    var _storydata = await _storiesServices.GetBestStoryById($"v0/item/{item}.json?print=pretty");
+                    finalResult.Add(_storydata);
+                }));
+
+            }
+            await Task.WhenAll(tasks);
+            return finalResult ?? new List<Story>();
         }
     }
 }
