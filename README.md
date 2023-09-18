@@ -6,19 +6,7 @@
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
-
-
-ASP.NET Core is an open-source and cross-platform framework for building modern cloud-based internet-connected applications,
-such as web apps, IoT apps, and mobile backends. ASP.NET Core apps run on
-[.NET](https://dot.net), a free, cross-platform, 
-and open-source application runtime. It was architected to provide an optimized development framework for apps that are
-deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain
-flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, 
-Mac, and Linux. [Learn more about ASP.NET Core]
-
-
-
-
+------------------------------------------------------------------------------------------------
 Our sample it is a smaple small use to do as follow:
 Using ASP.NET Core, implement a RESTful API to retrieve the details of the first n "best stories" from the Hacker News API, where n is specified by the caller to the API.
 The Hacker News API is documented here: https://github.com/HackerNews/API .
@@ -45,4 +33,12 @@ You should share a public repository with us, that should include a README.md fi
 any enhancements or changes you would make, given the time.
 We using some of feaure of Asp .net 6
 
+-------------------------------------------------------------------------
+how it use 
+1- using dotnet run on smae file of dll
+2- using donet run to open inetnal webserver to display
+3- opne the link https://localhost:7066/
+4- then write on the brower https://localhost:7066/swagger/index.html 
+
+you kane use the swagger to test the API nonus 
 
