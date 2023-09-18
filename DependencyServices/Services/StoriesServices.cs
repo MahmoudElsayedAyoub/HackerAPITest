@@ -32,16 +32,11 @@ namespace ColllaberaDigital.WebApi.DependencyServices.Services
 
         public async Task<Story> GetBestStoryById(string endpoint)
         {
-            try
-            {
-                var responseString = await _httpClient.GetStringAsync((_httpClient.BaseAddress + endpoint));
-                var _story = JsonConvert.DeserializeObject<Story>(responseString);
-                return _story ?? new Story();
-            }
-            catch (Exception)
-            {
-                throw;
-            }
+
+            var responseString = await _httpClient.GetStringAsync((_httpClient.BaseAddress + endpoint));
+            var _story = JsonConvert.DeserializeObject<Story>(responseString);
+            return _story ?? new Story();
+
         }
 
 
