@@ -1,10 +1,12 @@
- GNU GENERAL PUBLIC LICENSE
- Version 2, June 1991
+Project Title and Description
+Start with a clear and concise project title and a brief description of your API. This section provides an overview of what your project does.
 
- Copyright (C) 1989, 1991 Free Software Foundation, Inc.,
- 51 Franklin Street, Fifth Floor, Boston, MA 02110-1301 USA
- Everyone is permitted to copy and distribute verbatim copies
- of this license document, but changing it is not allowed.
+# Hacker News API
+
+An ASP.NET Core RESTful API to retrieve the details of the first n "best stories" from the Hacker News API.
+2. Prerequisites
+List any prerequisites that users need to have installed or configured before they can run your project. Include the .NET version, packages, or tools required.
+
 
  --
 Our api is generate three Api nous 
@@ -19,7 +21,20 @@ GetBestStorieswithDeatilsV2ByN :  return  stories with deatils  by give specif n
 
 GetStoriesById: get specific story by Id
 
---
+--------------------------------------------------
+
+## Installation and Setup
+
+1. Clone this repository:
+git clone https://github.com/yourusername/hacker-news-api.git
+cd hacker-news-api
+
+=
+
+2. Build and run the project:
+dotnet build
+dotnet run
+
 
 We are using some LIbaray like
 
@@ -36,4 +51,4 @@ Parallel.ForAsync
 
 
 ForEachAsync<TSource>(IAsyncEnumerable<TSource>, Func<TSource,CancellationToken,ValueTask>)
-
+o [open an issue](https://github.com/MahmoudElsayedAyoub/HackerAPITest/issues
