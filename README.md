@@ -7,15 +7,17 @@
  of this license document, but changing it is not allowed.
 
 
+Our api is generate three Api nous 
+**
+ListBestStories : return all stories
+GetBestStoriesByN : return best stories by give specif n of stories 
+GetBestStoriesWithDeatilsByN : return  stories with deatils  by give specif n of stories 
+GetBestStorieswithDeatilsV2ByN :  return  stories with deatils  by give specif n of stories  v2
+GetStoriesById: get specif story by Id
 
-ASP.NET Core is an open-source and cross-platform framework for building modern cloud-based internet-connected applications,
-such as web apps, IoT apps, and mobile backends. ASP.NET Core apps run on
-[.NET](https://dot.net), a free, cross-platform, 
-and open-source application runtime. It was architected to provide an optimized development framework for apps that are
-deployed to the cloud or run on-premises. It consists of modular components with minimal overhead, so you retain
-flexibility while constructing your solutions. You can develop and run your ASP.NET Core apps cross-platform on Windows, 
-Mac, and Linux. [Learn more about ASP.NET Core]
 
+
+**
 
 
 
