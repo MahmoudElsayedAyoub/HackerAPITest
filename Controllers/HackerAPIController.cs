@@ -91,7 +91,6 @@ namespace ColllaberaDigital.WebApi.Controllers
         }
 
 
-
         [HttpGet(nameof(GetBestStorieswithDeatilsV2ByN))]
         public async Task<List<Story>> GetBestStorieswithDeatilsV2ByN(int? n)
         {
