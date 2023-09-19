@@ -1,4 +1,5 @@
-﻿using ColllaberaDigital.WebApi.DependencyServices.Contract;
+﻿using BenchmarkDotNet.Attributes;
+using ColllaberaDigital.WebApi.DependencyServices.Contract;
 using ColllaberaDigital.WebApi.DependencyServices.Dtos;
 using Microsoft.AspNetCore.DataProtection.KeyManagement;
 using Microsoft.AspNetCore.Http;
@@ -12,6 +13,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [MemoryDiagnoser]
     public class HackerAPIController : ControllerBase
     {
 
@@ -35,6 +37,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 
 
         [HttpGet(nameof(ListBestStories))]
+        [Benchmark]
         public async Task<List<long>> ListBestStories()
         {
             return await _storiesServices.GetBestStories("v0/beststories.json", null);
@@ -42,6 +45,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 
 
         [HttpGet(nameof(GetBestStoriesByN))]
+        [Benchmark]
         public async Task<List<long>> GetBestStoriesByN(int? n)
         {
             return await _storiesServices.GetBestStories("v0/beststories.json", n);
@@ -51,6 +55,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 
         // GET api/<ValuesController>/5
         [HttpGet(nameof(GetStoriesById))]
+        [Benchmark]
         public async Task<Story> GetStoriesById(long id)
         {
             //search first in cache 
@@ -71,6 +76,7 @@ namespace ColllaberaDigital.WebApi.Controllers
         }
 
         [HttpGet(nameof(GetBestStoriesWithDeatilsByN))]
+        [Benchmark]
         public async Task<List<Story>> GetBestStoriesWithDeatilsByN(int? n)
         {
 
@@ -92,6 +98,7 @@ namespace ColllaberaDigital.WebApi.Controllers
 
 
         [HttpGet(nameof(GetBestStorieswithDeatilsV2ByN))]
+        [Benchmark]
         public async Task<List<Story>> GetBestStorieswithDeatilsV2ByN(int? n)
         {
 
