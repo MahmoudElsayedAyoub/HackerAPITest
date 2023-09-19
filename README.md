@@ -15,8 +15,6 @@ GetBestStoriesWithDeatilsByN : return  stories with deatils  by give specif n of
 GetBestStorieswithDeatilsV2ByN :  return  stories with deatils  by give specif n of stories  v2
 GetStoriesById: get specif story by Id
 
-
-
 **
 
 
