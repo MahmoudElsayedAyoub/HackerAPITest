@@ -6,9 +6,9 @@
  Everyone is permitted to copy and distribute verbatim copies
  of this license document, but changing it is not allowed.
 
-
+ --
 Our api is generate three Api nous 
-**
+
 ListBestStories : return all stories
 
 GetBestStoriesByN : return best stories by give specif n of stories 
@@ -19,7 +19,7 @@ GetBestStorieswithDeatilsV2ByN :  return  stories with deatils  by give specif n
 
 GetStoriesById: get specif story by Id
 
-**
+--
 
 
 
