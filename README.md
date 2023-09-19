@@ -31,12 +31,13 @@ cd hacker-news-api
 
 2. Build and run the project:
 
-dotnet build
+	dotnet build
 
-dotnet run
+	dotnet run
 
 ----------------------------------------------------
- [open an issue](https://github.com/MahmoudElsayedAyoub/HackerAPITest/issues
+ Open an issue:
+ https://github.com/MahmoudElsayedAyoub/HackerAPITest/issues
 
 --------------------------------------------------------------------
 We are using some LIbaray like
