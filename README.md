@@ -29,20 +29,27 @@ GetStoriesById: get specific story by Id
 git clone https://github.com/yourusername/hacker-news-api.git
 cd hacker-news-api
 
-=
-
 2. Build and run the project:
+
 dotnet build
+
 dotnet run
 
+----------------------------------------------------
+ [open an issue](https://github.com/MahmoudElsayedAyoub/HackerAPITest/issues
 
+--------------------------------------------------------------------
 We are using some LIbaray like
 
 BenchmarkDotNet helps you to transform methods into benchmarks, track their performance, and share reproducible measurement experiments. 
+
 It's no harder than writing unit tests! Under the hood, it performs a lot of magic that guarantees reliable and precise results thanks to the perfolizer statistical engine.
- BenchmarkDotNet protects you from popular benchmarking mistakes and warns you if something is wrong with your benchmark design or obtained measurements. 
- The results are presented in a user-friendly form that highlights all the important facts about your experiment.
- BenchmarkDotNet is already adopted by 17400+ GitHub projects including .NET Runtime, .NET Compiler, .NET Performance, and many others.
+
+BenchmarkDotNet protects you from popular benchmarking mistakes and warns you if something is wrong with your benchmark design or obtained measurements. 
+
+The results are presented in a user-friendly form that highlights all the important facts about your experiment.
+
+BenchmarkDotNet is already adopted by 17400+ GitHub projects including .NET Runtime, .NET Compiler, .NET Performance, and many others.
 
 
 AND
@@ -51,4 +58,4 @@ Parallel.ForAsync
 
 
 ForEachAsync<TSource>(IAsyncEnumerable<TSource>, Func<TSource,CancellationToken,ValueTask>)
-o [open an issue](https://github.com/MahmoudElsayedAyoub/HackerAPITest/issues
+
