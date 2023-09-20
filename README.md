@@ -9,7 +9,7 @@ List any prerequisites that users need to have installed or configured before th
 
 
  --
-Our API is Contains  5 Api nonus 
+Our API is Contains  5 Api Funtions  
 
 ListBestStories : Return all stories
 
