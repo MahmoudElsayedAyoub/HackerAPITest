@@ -9,15 +9,15 @@ List any prerequisites that users need to have installed or configured before th
 
 
  --
-Our api is generate three Api nous 
+Our API is Contains  5 Api nonus 
 
-ListBestStories : return all stories
+ListBestStories : Return all stories
 
-GetBestStoriesByN : return best stories by give specif n of stories 
+GetBestStoriesByN : Return best stories by give specif n of stories 
 
-GetBestStoriesWithDeatilsByN : return  stories with deatils  by give specif n of stories 
+GetBestStoriesWithDeatilsByN : Return  stories with deatils  by give specific n of stories 
 
-GetBestStorieswithDeatilsV2ByN :  return  stories with deatils  by give specif n of stories  v2
+GetBestStorieswithDeatilsV2ByN :  Return  stories with deatils  by give specific n of stories  v2
 
 GetStoriesById: get specific story by Id
 
